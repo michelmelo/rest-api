@@ -22,7 +22,7 @@ class AdminMiddleware
         if (EnsureFrontendRequestsAreStateful::fromFrontend($request)) {
             if (! auth('admin')->user()) {
                 return response([
-                    'message' => __('rest-api::app.common.forbidden-error'),
+                    'message' => __('rest-api::app.common.unauthenticated'),
                 ], 401);
             }
 
@@ -37,7 +37,7 @@ class AdminMiddleware
         }
 
         return response([
-            'message' => __('rest-api::app.common.forbidden-error'),
+            'message' => __('rest-api::app.common.unauthenticated'),
         ], 401);
     }
 }
